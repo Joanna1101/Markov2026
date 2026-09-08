@@ -1,9 +1,8 @@
-**Homework 1**
+**Homework 1**<br>
+Code, figures, writeup in Homework 1 folder.<br><br>
 
-Code, figures, writeup in Homework 1 folder.
 
-**Homework 2**
-
+**Homework 2**<br>
 Code, figures, writeup in Homework 2 folder.
 - Problem 3 code in HW2_Prob3.py
 - Problem 4 code in HW2_Prob4.py
