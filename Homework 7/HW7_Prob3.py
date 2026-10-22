@@ -39,7 +39,20 @@ def plotraster(meteors, name):
     plt.savefig(f"HW7_P3_{name}.png")
     plt.close()
     
-
+def gammaplot(T3):
+    t = np.linspace(0, T3.max(), 500)
+    f = 32*t**2*np.exp(-4*t)
+    
+    plt.hist(T3, bins = 100, density = True, alpha = 0.8, color = "lemonchiffon", edgecolor = "gold", label = "Simulation")
+    plt.plot(t, f, color = "tomato", label = "Gamma density")
+    plt.xlabel("T3")
+    plt.ylabel("Density")
+    plt.title("T3 Histogram vs Gamma(3,4)")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig("T3Gamma.png")
+    plt.close()    
+    
 ## SIMULATIONS ##################################################################################
 #################################################################################################
 def simexp(T, lam):
@@ -108,5 +121,13 @@ if __name__ == "__main__":
     plotraster(meteors_poiss, "Poisson")
     
     # compare histogram of T3 with gamma density
+    sims = 200000
+    X1 = np.random.exponential(scale = 1/4, size = sims)
+    X2 = np.random.exponential(scale = 1/4, size = sims)
+    X3 = np.random.exponential(scale = 1/4, size = sims)
+    T3 = X1 + X2 + X3
+    
+    gammaplot(T3)
+    
     # among hours with N(1) = 3, estimate P(N(1/2) = 0, E[T_1]), and correlation btwn counts in first and second half hour over all hours
     # Compute total variation dist btwn Binomial(t/delta t, lambda delta t) and poisson(lambda t) for t=1 and deltat = 1/10,...1/2000 and fit itsslope against delta t on log log
